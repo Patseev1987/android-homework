@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Task1</string>
+    <string name="reset">Сброс</string>
+    <string name="aLotOfPassenger">Пассажиров слишком много!</string>
+    <string name="emptyBuss">Все места свободны!</string>
+    <string name="notEmptyNotFull">Осталось мест: </string>
+</resources>
