@@ -9,14 +9,17 @@ android {
 
     defaultConfig {
         applicationId = "com.example.m2_layout"
-        minSdk = 27
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
