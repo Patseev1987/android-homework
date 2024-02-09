@@ -16,12 +16,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-<<<<<<< HEAD
+
     buildFeatures{
         viewBinding = true
     }
-=======
->>>>>>> origin/master
+
 
     buildTypes {
         release {
