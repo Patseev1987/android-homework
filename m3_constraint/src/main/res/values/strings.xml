@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">m3_constraint</string>
+<<<<<<< HEAD
     <string name="singer">Исполнитель</string>
     <string name="song">Наименование компазиции</string>
+=======
+>>>>>>> origin/master
 </resources>
