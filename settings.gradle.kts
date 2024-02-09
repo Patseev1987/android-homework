@@ -17,3 +17,4 @@ rootProject.name = "Homeworks"
 include(":app")
 include(":m1_hello_world")
 include(":m2_layout")
+include(":m3_constraint")
