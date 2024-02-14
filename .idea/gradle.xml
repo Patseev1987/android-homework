@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/m1_hello_world" />
             <option value="$PROJECT_DIR$/m2_layout" />
             <option value="$PROJECT_DIR$/m3_constraint" />
+            <option value="$PROJECT_DIR$/m4_components" />
           </set>
         </option>
       </GradleProjectSettings>
