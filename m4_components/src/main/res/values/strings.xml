@@ -6,6 +6,11 @@
     <string name="sex">Пол</string>
     <string name="male">М</string>
     <string name="female">Ж</string>
-    <string name="points">Баллы</string>
+    <string name="points_text">Баллы</string>
     <string name="switch_notification">Получать уведомления</string>
+    <string name="authorization_text">Об авторизации на устройстве</string>
+    <string name="newItems_text">О новинках и предложениях</string>
+    <string name="points_of_number">%d/100</string>
+    <string name="button_save_text">Сохранить</string>
+    <string name="toast_text">Изменения сохранены</string>
 </resources>
