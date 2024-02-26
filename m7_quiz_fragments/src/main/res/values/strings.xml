@@ -2,4 +2,6 @@
     <string name="app_name">Next generation Bogdan\'s QUIZ</string>
     <string name="the_cat_with_laptop">the cat with laptop</string>
     <string name="let_s_go">Let\'s go!!!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
