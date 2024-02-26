@@ -5,5 +5,7 @@
     <string name="let_s_go">Продолжить!</string>
     <string name="back_button_quiz_fragment">Назад</string>
     <string name="send_results_quiz_fragment">Отправить результаты</string>
+    <string name="you_were_right_in_d_cases">Вы были правы в %d случях</string>
+
 
 </resources>

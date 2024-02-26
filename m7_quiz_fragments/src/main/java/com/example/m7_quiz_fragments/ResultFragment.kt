@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.m7_quiz_fragments.databinding.FragmentResultBinding
+import com.example.m7_quiz_fragments.quiz.QuizStorage
 import com.example.m7_quiz_fragments.quiz.Result
 
 
@@ -29,8 +30,11 @@ class ResultFragment : Fragment() {
 
         answers = ResultFragmentArgs.fromBundle(requireArguments()).results
         val numberOfRightAnswers = getNumberOfRightAnswers()
-        binding.tvNumberOfRightAnswer.text =
+        binding.tvNumberOfRightAnswer.text = if (numberOfRightAnswers == 1)
             String.format(getString(R.string.you_were_right_in_d_cases), numberOfRightAnswers)
+         else String.format(getString(R.string.you_were_right_in_d_case), numberOfRightAnswers)
+            setHints()
+
         binding.bAgain.setOnClickListener {
             findNavController().navigate(R.id.action_resultFragment_to_quizFragment)
         }
@@ -45,6 +49,18 @@ class ResultFragment : Fragment() {
                 result++
             }
         return result
+    }
+
+    private fun setHints() {
+        if (answers.rightAnswers.contains(0)) {
+            val sb = StringBuilder()
+            for ((i, answer) in answers.rightAnswers.withIndex()) {
+                if (answer == 0) {
+                    sb.append("In ${i + 1} case the right answer is:\n${QuizStorage.questions[i].rightAnswer}\n")
+                }
+            }
+            binding.hints.text = sb.toString()
+        }
     }
 
     override fun onDestroy() {
