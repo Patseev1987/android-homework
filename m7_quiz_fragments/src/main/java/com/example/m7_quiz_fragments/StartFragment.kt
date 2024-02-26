@@ -19,7 +19,7 @@ class StartFragment : Fragment() {
         _binding = FragmentStartBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.bLetsGo.setOnClickListener {
-              findNavController().navigate(R.id.action_startFragment_to_quizFragment)
+            findNavController().navigate(R.id.action_startFragment_to_quizFragment)
         }
         return view
     }

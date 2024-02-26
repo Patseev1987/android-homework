@@ -6,14 +6,35 @@
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".ResultFragment">
 
+
 <TextView
         android:id="@+id/tv_number_of_right_answer"
         android:textSize="30sp"
         android:gravity="center"
         android:text="@string/you_were_right_in_d_cases"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/iv_happy_face"/>
+    <ImageView
+            android:id="@+id/iv_happy_face"
+            android:src="@drawable/scale_1200"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:padding="8dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/happy_face"/>
+    <Button
+            android:id="@+id/b_again"
+            android:text="@string/again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="48dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
