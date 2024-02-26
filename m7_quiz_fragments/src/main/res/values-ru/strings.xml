@@ -3,5 +3,7 @@
     <string name="app_name">Новое поколение Богданова КВИЗА</string>
     <string name="the_cat_with_laptop">Котик с ноутбуком</string>
     <string name="let_s_go">Продолжить!</string>
+    <string name="back_button_quiz_fragment">Назад</string>
+    <string name="send_results_quiz_fragment">Отправить результаты</string>
 
 </resources>
