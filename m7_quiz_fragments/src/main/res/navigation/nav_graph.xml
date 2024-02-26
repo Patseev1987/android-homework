@@ -34,7 +34,7 @@
             android:label="fragment_result"
             tools:layout="@layout/fragment_result">
         <action android:id="@+id/action_resultFragment_to_quizFragment" app:destination="@id/quizFragment"
-                app:popUpTo="@id/quizFragment"/>
+                app:popUpTo="@id/startFragment"/>
         <argument android:name="results" app:argType="com.example.m7_quiz_fragments.quiz.Result"/>
     </fragment>
 </navigation>

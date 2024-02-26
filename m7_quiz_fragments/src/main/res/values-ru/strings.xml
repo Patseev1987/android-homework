@@ -6,6 +6,12 @@
     <string name="back_button_quiz_fragment">Назад</string>
     <string name="send_results_quiz_fragment">Отправить результаты</string>
     <string name="you_were_right_in_d_cases">Вы были правы в %d случях</string>
+    <string name="you_were_right_in_d_case">Вы были правы в %d случае</string>
+    <string name="happy_face">счастливое лицо</string>
+    <string name="again">Начать сначала</string>
+    <string name="you_should_choose_answer_on_the_first_question">Вы должны выбрать ответ на первый вопрос</string>
+    <string name="you_should_choose_answer_on_the_second_question">Вы долны выбрать ответ на второй вопрос</string>
+    <string name="you_should_choose_answer_on_the_third_question">Вы должны выбрать ответ на 3 вопрос</string>
 
 
 </resources>

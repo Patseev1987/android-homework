@@ -1,6 +1,6 @@
 package com.example.m7_quiz_fragments
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,11 +30,11 @@ class ResultFragment : Fragment() {
 
         answers = ResultFragmentArgs.fromBundle(requireArguments()).results
         val numberOfRightAnswers = getNumberOfRightAnswers()
-        binding.tvNumberOfRightAnswer.text = if (numberOfRightAnswers == 1)
+        val textTitle = if (numberOfRightAnswers != 1)
             String.format(getString(R.string.you_were_right_in_d_cases), numberOfRightAnswers)
          else String.format(getString(R.string.you_were_right_in_d_case), numberOfRightAnswers)
             setHints()
-
+        binding.tvNumberOfRightAnswer.text = textTitle
         binding.bAgain.setOnClickListener {
             findNavController().navigate(R.id.action_resultFragment_to_quizFragment)
         }

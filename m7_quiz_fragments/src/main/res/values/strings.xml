@@ -4,13 +4,13 @@
     <string name="let_s_go">Let\'s go!!!</string>
     <string name="back_button_quiz_fragment">Back</string>
     <string name="send_results_quiz_fragment">Send results</string>
-    <string name="you_were_right_in_d_cases" translatable="false">You were right in %d cases</string>
-    <string name="you_were_right_in_d_case" translatable="false">You were right in %d case</string>
-    <string name="happy_face" translatable="false">happy face</string>
-    <string name="again" translatable="false">Again</string>
-    <string name="you_should_choose_answer_on_the_first_question" translatable="false">You should choose answer on the first question
+    <string name="you_were_right_in_d_cases">You were right in %d cases</string>
+    <string name="you_were_right_in_d_case">You were right in %d case</string>
+    <string name="happy_face">happy face</string>
+    <string name="again">Again</string>
+    <string name="you_should_choose_answer_on_the_first_question">You should choose answer on the first question
     </string>
-    <string name="you_should_choose_answer_on_the_second_question" translatable="false">You should choose answer on the second question
+    <string name="you_should_choose_answer_on_the_second_question">You should choose answer on the second question
     </string>
     <string name="you_should_choose_answer_on_the_third_question">You should choose answer on the third question
     </string>
