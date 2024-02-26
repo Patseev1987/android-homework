@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/m3_constraint" />
             <option value="$PROJECT_DIR$/m4_components" />
             <option value="$PROJECT_DIR$/m5_quiz_resources" />
+            <option value="$PROJECT_DIR$/m7_quiz_fragments" />
           </set>
         </option>
       </GradleProjectSettings>
