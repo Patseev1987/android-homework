@@ -14,7 +14,6 @@ import com.example.m8_quiz_animation.quiz.QuizStorage
 import com.example.m8_quiz_animation.quiz.Result
 
 
-
 class QuizFragment : Fragment() {
 
     private val quizStorage = QuizStorage
@@ -29,15 +28,11 @@ class QuizFragment : Fragment() {
         val view = binding.root
         initView()
         setListeners()
-        binding.bBack.animate().apply {
-            duration = 10000
-            alpha(1f)
-
-        }.start()
+        setAnimation()
         return view
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         binding.bBack.setOnClickListener {
             findNavController().navigate(R.id.action_quizFragment_to_startFragment)
         }
@@ -131,13 +126,20 @@ class QuizFragment : Fragment() {
         cv.setTextForAnswer(answers)
     }
 
-    private fun setAnimation(){
+    private fun setAnimation() {
         binding.bBack.animate().apply {
-            duration = 3000
-            alphaBy(1f)
+            duration = 5000
+            alpha(1f)
+        }.start()
+        binding.cv2.scaleX = 0.1f
+        binding.cv2.scaleY = 0.1f
+        binding.cv2.animate().apply {
+            duration = 2000
+            rotation(360f)
+            scaleX(1f)
+            scaleY(1f)
         }.start()
     }
-
 
 
     override fun onDestroy() {
