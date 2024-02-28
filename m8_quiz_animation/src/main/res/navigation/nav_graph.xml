@@ -15,7 +15,7 @@
                 android:id="@+id/action_startFragment_to_quizFragment"
                 app:destination="@id/quizFragment" app:popUpTo="@id/startFragment" app:popUpToInclusive="false"
                 app:launchSingleTop="false"
-        />
+                app:enterAnim="@anim/bogdan_anmation_enter" app:exitAnim="@anim/bogdan_anmation_exit"/>
     </fragment>
     <fragment
             android:id="@+id/quizFragment"
@@ -24,10 +24,11 @@
             tools:layout="@layout/fragment_quiz">
         <action
                 android:id="@+id/action_quizFragment_to_resultFragment"
-                app:destination="@id/resultFragment" app:popUpTo="@id/quizFragment"/>
+                app:destination="@id/resultFragment" app:popUpTo="@id/quizFragment"
+                app:enterAnim="@anim/bogdan_anmation_enter" app:exitAnim="@anim/bogdan_anmation_exit"/>
         <action
                 android:id="@+id/action_quizFragment_to_startFragment"
-                app:destination="@id/startFragment" app:popUpTo="@id/nav_graph"/>
+                app:destination="@id/startFragment" app:popUpTo="@id/nav_graph" app:enterAnim="@android:anim/fade_out"/>
     </fragment>
     <fragment
             android:id="@+id/resultFragment"
@@ -35,7 +36,7 @@
             android:label="fragment_result"
             tools:layout="@layout/fragment_result">
         <action android:id="@+id/action_resultFragment_to_quizFragment" app:destination="@id/quizFragment"
-                app:popUpTo="@id/startFragment"/>
+                app:popUpTo="@id/startFragment" app:enterAnim="@android:anim/fade_in"/>
         <argument android:name="results" app:argType="com.example.m8_quiz_animation.quiz.Result"/>
     </fragment>
 </navigation>
