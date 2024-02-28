@@ -19,6 +19,7 @@
 
     <Button
             android:id="@+id/b_lets_go"
+            android:background="@drawable/bogdan_ripple"
             android:text="@string/let_s_go"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
