@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.FloatRange
 import androidx.navigation.fragment.findNavController
 import com.example.m8_quiz_animation.custom.CustomView
 import com.example.m8_quiz_animation.databinding.FragmentQuizBinding
@@ -27,6 +28,16 @@ class QuizFragment : Fragment() {
         _binding = FragmentQuizBinding.inflate(inflater, container, false)
         val view = binding.root
         initView()
+        setListeners()
+        binding.bBack.animate().apply {
+            duration = 10000
+            alpha(1f)
+
+        }.start()
+        return view
+    }
+
+    private fun setListeners(){
         binding.bBack.setOnClickListener {
             findNavController().navigate(R.id.action_quizFragment_to_startFragment)
         }
@@ -38,7 +49,6 @@ class QuizFragment : Fragment() {
                 findNavController().navigate(action)
             }
         }
-        return view
     }
 
     private fun getResults(): Result {
@@ -119,6 +129,13 @@ class QuizFragment : Fragment() {
             quizStorage.questions[questionNumber].wrongAnswer2
         )
         cv.setTextForAnswer(answers)
+    }
+
+    private fun setAnimation(){
+        binding.bBack.animate().apply {
+            duration = 3000
+            alphaBy(1f)
+        }.start()
     }
 
 
