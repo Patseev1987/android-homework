@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/startFragment">
+
+    <fragment
+            android:id="@+id/startFragment"
+            android:name="com.example.m9_quiz_localization.StartFragment"
+            android:label="fragment_start"
+            tools:layout="@layout/fragment_start">
+        <action
+                android:id="@+id/action_startFragment_to_quizFragment"
+                app:destination="@id/quizFragment" app:popUpTo="@id/startFragment" app:popUpToInclusive="false"
+                app:launchSingleTop="false"
+                app:enterAnim="@anim/bogdan_anmation_enter" app:exitAnim="@anim/bogdan_anmation_exit"/>
+    </fragment>
+    <fragment
+            android:id="@+id/quizFragment"
+            android:name="com.example.m9_quiz_localization.QuizFragment"
+            android:label="fragment_quiz"
+            tools:layout="@layout/fragment_quiz">
+        <action
+                android:id="@+id/action_quizFragment_to_resultFragment"
+                app:destination="@id/resultFragment" app:popUpTo="@id/quizFragment"
+                app:enterAnim="@anim/bogdan_anmation_enter" app:exitAnim="@anim/bogdan_anmation_exit"/>
+        <action
+                android:id="@+id/action_quizFragment_to_startFragment"
+                app:destination="@id/startFragment" app:popUpTo="@id/nav_graph" app:enterAnim="@android:anim/fade_out"/>
+    </fragment>
+    <fragment
+            android:id="@+id/resultFragment"
+            android:name="com.example.m9_quiz_localization.ResultFragment"
+            android:label="fragment_result"
+            tools:layout="@layout/fragment_result">
+        <action android:id="@+id/action_resultFragment_to_quizFragment" app:destination="@id/quizFragment"
+                app:popUpTo="@id/startFragment" app:enterAnim="@android:anim/fade_in"/>
+        <argument android:name="results" app:argType="com.example.m9_quiz_localization.quiz.Result"/>
+    </fragment>
+</navigation>
