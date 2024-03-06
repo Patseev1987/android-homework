@@ -25,22 +25,31 @@ class ResultFragment : Fragment() {
     ): View {
         _binding = FragmentResultBinding.inflate(inflater, container, false)
         val view = binding.root
-        initViews(binding)
-        binding.bAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_resultFragment_to_quizFragment)
-        }
         return view
     }
 
-  private fun initViews(binding: FragmentResultBinding){
-      answers = ResultFragmentArgs.fromBundle(requireArguments()).results
-      val numberOfRightAnswers = getNumberOfRightAnswers()
-      val textTitle = if (numberOfRightAnswers != 1)
-          String.format(getString(R.string.you_were_right_in_d_cases), numberOfRightAnswers)
-      else String.format(getString(R.string.you_were_right_in_d_case), numberOfRightAnswers)
-      setHints()
-      binding.tvNumberOfRightAnswer.text = textTitle
-  }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews(binding)
+        setOnClickListeners(binding)
+    }
+
+
+    private fun setOnClickListeners(binding: FragmentResultBinding) {
+        binding.bAgain.setOnClickListener {
+            findNavController().navigate(R.id.action_resultFragment_to_quizFragment)
+        }
+    }
+
+    private fun initViews(binding: FragmentResultBinding) {
+        answers = ResultFragmentArgs.fromBundle(requireArguments()).results
+        val numberOfRightAnswers = getNumberOfRightAnswers()
+        val textTitle = if (numberOfRightAnswers != 1)
+            String.format(getString(R.string.you_were_right_in_d_cases), numberOfRightAnswers)
+        else String.format(getString(R.string.you_were_right_in_d_case), numberOfRightAnswers)
+        setHints()
+        binding.tvNumberOfRightAnswer.text = textTitle
+    }
 
     private fun getNumberOfRightAnswers(): Int {
         var result = 0

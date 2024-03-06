@@ -25,7 +25,17 @@ class QuizFragment : Fragment() {
     ): View {
         _binding = FragmentQuizBinding.inflate(inflater, container, false)
         val view = binding.root
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initView(binding)
+        setOnClickListeners(binding)
+    }
+
+
+    private fun setOnClickListeners(binding: FragmentQuizBinding) {
         binding.bBack.setOnClickListener {
             findNavController().navigate(R.id.action_quizFragment_to_startFragment)
         }
@@ -34,16 +44,15 @@ class QuizFragment : Fragment() {
                 moveToQuizFragment()
             }
         }
-        return view
     }
 
-
-    private fun moveToQuizFragment(){
+    private fun moveToQuizFragment() {
         val result = getResults()
         val action = QuizFragmentDirections
             .actionQuizFragmentToResultFragment(result)
         findNavController().navigate(action)
     }
+
 
     private fun getResults(): Result {
         val result = IntArray(3)
@@ -124,7 +133,6 @@ class QuizFragment : Fragment() {
         )
         cv.setTextForAnswer(answers)
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
