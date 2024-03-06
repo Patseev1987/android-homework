@@ -62,18 +62,18 @@ class QuizFragment : Fragment() {
         val answer2 = binding.cv2.getAnswer()
         val answer3 = binding.cv3.getAnswer()
 
-        if (answer1 == quizStorage.questions[0].rightAnswer) {
+        if (answer1 == resources.getStringArray(R.array.answers_array)[0]) {
             result[0] = 1
         } else {
             result[0] = 0
         }
 
-        if (answer2 == quizStorage.questions[1].rightAnswer) {
+        if (answer2 == resources.getStringArray(R.array.answers_array)[3]) {
             result[1] = 1
         } else {
             result[1] = 0
         }
-        if (answer3 == quizStorage.questions[2].rightAnswer) {
+        if (answer3 == resources.getStringArray(R.array.answers_array)[6]) {
             result[2] = 1
         } else {
             result[2] = 0
@@ -108,10 +108,11 @@ class QuizFragment : Fragment() {
 
     private fun initView(binding: FragmentQuizBinding) {
 
+        val questions = resources.getStringArray(R.array.question_arrays)
 
-        binding.cv1.setTextForQuestion(quizStorage.questions[0].question)
-        binding.cv2.setTextForQuestion(quizStorage.questions[1].question)
-        binding.cv3.setTextForQuestion(quizStorage.questions[2].question)
+        binding.cv1.setTextForQuestion(questions[0])
+        binding.cv2.setTextForQuestion(questions[1])
+        binding.cv3.setTextForQuestion(questions[2])
 
         setAnswers(binding.cv1)
         setAnswers(binding.cv2)
@@ -119,19 +120,39 @@ class QuizFragment : Fragment() {
 
     }
 
+
     private fun setAnswers(cv: CustomView) {
 
-        val questionNumber = when (cv) {
-            binding.cv1 -> 0
-            binding.cv2 -> 1
-            else -> 2
+        when (cv) {
+            binding.cv1 -> {
+              val answers =  listOf(
+                  resources.getStringArray(R.array.answers_array)[0],
+                  resources.getStringArray(R.array.answers_array)[1],
+                  resources.getStringArray(R.array.answers_array)[2]
+              )
+                cv.setTextForAnswer(answers)
+            }
+            binding.cv2 -> {
+                val answers =  listOf(
+                    resources.getStringArray(R.array.answers_array)[3],
+                    resources.getStringArray(R.array.answers_array)[4],
+                    resources.getStringArray(R.array.answers_array)[5]
+                )
+                cv.setTextForAnswer(answers)
+            }
+            else -> {
+                val answers =  listOf(
+                    resources.getStringArray(R.array.answers_array)[6],
+                    resources.getStringArray(R.array.answers_array)[7],
+                    resources.getStringArray(R.array.answers_array)[8]
+                )
+                cv.setTextForAnswer(answers)
+            }
         }
-        val answers = listOf(
-            quizStorage.questions[questionNumber].rightAnswer,
-            quizStorage.questions[questionNumber].wrongAnswer1,
-            quizStorage.questions[questionNumber].wrongAnswer2
-        )
-        cv.setTextForAnswer(answers)
+
+
+
+
     }
 
     private fun setAnimation(binding: FragmentQuizBinding) {

@@ -14,4 +14,24 @@
     </string>
     <string name="you_should_choose_answer_on_the_third_question">You should choose answer on the third question
     </string>
+    <string name="in_case_the_right_answer_is">In %d case the right answer is:\n%s\n\n</string>
+
+    <string-array name="question_arrays">
+        <item>Where is the archive for this lesson?</item>
+        <item>Who should judge GB for such an android development program?</item>
+        <item>How to pass an interview after such a course in Android development?</item>
+    </string-array>
+
+    <string-array name="answers_array">
+        <item>Forgot to prepare a program for android development!</item>
+        <item>Ate a cow!</item>
+        <item >You don\'t see it, but they are there! Like a gopher in DMB.</item>
+        <item>A well-drafted contract allows you to do such crazy things!</item>
+        <item>God be their judge!</item>
+        <item>Judge Dredd!</item>
+        <item>With God\'s help!</item>
+        <item>No way!</item>
+        <item>Why should we  pass an interview? After that course we will be very high value employees!</item>
+    </string-array>
+
 </resources>

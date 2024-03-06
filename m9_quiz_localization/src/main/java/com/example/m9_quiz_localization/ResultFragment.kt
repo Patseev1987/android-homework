@@ -68,8 +68,13 @@ class ResultFragment : Fragment() {
         if (answers.rightAnswers.contains(0)) {
             val sb = StringBuilder()
             for ((i, answer) in answers.rightAnswers.withIndex()) {
+                val rightAnswer = when (i) {
+                    0 ->    resources.getStringArray(R.array.answers_array)[0]
+                    1 ->    resources.getStringArray(R.array.answers_array)[3]
+                    else -> resources.getStringArray(R.array.answers_array)[6]
+                }
                 if (answer == 0) {
-                    sb.append("In ${i + 1} case the right answer is:\n${QuizStorage.questions[i].rightAnswer}\n")
+                    sb.append(getString(R.string.in_case_the_right_answer_is, i + 1, rightAnswer))
                 }
             }
             binding.hints.text = sb.toString()

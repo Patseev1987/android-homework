@@ -12,6 +12,25 @@
     <string name="you_should_choose_answer_on_the_first_question">Вы должны выбрать ответ на первый вопрос</string>
     <string name="you_should_choose_answer_on_the_second_question">Вы долны выбрать ответ на второй вопрос</string>
     <string name="you_should_choose_answer_on_the_third_question">Вы должны выбрать ответ на 3 вопрос</string>
+    <string name="in_case_the_right_answer_is">В %d случае правильный ответ:\n%s\n\n</string>
 
+
+    <string-array name="question_arrays">
+        <item>Где архив по данному уроку?</item>
+        <item>Кто должен судить GB за такую программу по android-разработке?</item>
+        <item>Как пройти собеседование после такого курса по android-разработке?</item>
+    </string-array>
+
+    <string-array name="answers_array">
+        <item>Забыли подготовить программу по android-разработке!</item>
+        <item>Съела корова!</item>
+        <item>Ты его не видишь, а они есть! Как суслик в ДМБ.</item>
+        <item>Хорошо составленный контракт позволяет творить такую дичь!</item>
+        <item>Бог им судья!</item>
+        <item>Судья ДРЕД!</item>
+        <item>С божей помощью!</item>
+        <item>Никак!</item>
+        <item>А зачем его проходить?/nС дипломом от GB с руками оторвут и без собеса!</item>
+    </string-array>
 
 </resources>
