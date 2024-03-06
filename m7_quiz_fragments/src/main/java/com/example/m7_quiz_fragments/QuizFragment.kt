@@ -1,7 +1,6 @@
 package com.example.m7_quiz_fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import com.example.m7_quiz_fragments.custom.CustomView
 import com.example.m7_quiz_fragments.databinding.FragmentQuizBinding
 import com.example.m7_quiz_fragments.quiz.QuizStorage
 import com.example.m7_quiz_fragments.quiz.Result
-import java.util.Random
 
 
 class QuizFragment : Fragment() {
@@ -24,22 +22,27 @@ class QuizFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentQuizBinding.inflate(inflater, container, false)
         val view = binding.root
-        initView()
+        initView(binding)
         binding.bBack.setOnClickListener {
             findNavController().navigate(R.id.action_quizFragment_to_startFragment)
         }
         binding.bSent.setOnClickListener {
             if (checkRadioGroups()) {
-                val result = getResults()
-                val action = QuizFragmentDirections
-                    .actionQuizFragmentToResultFragment(result)
-                findNavController().navigate(action)
+                moveToQuizFragment()
             }
         }
         return view
+    }
+
+
+    private fun moveToQuizFragment(){
+        val result = getResults()
+        val action = QuizFragmentDirections
+            .actionQuizFragmentToResultFragment(result)
+        findNavController().navigate(action)
     }
 
     private fun getResults(): Result {
@@ -94,7 +97,7 @@ class QuizFragment : Fragment() {
     }
 
 
-    private fun initView() {
+    private fun initView(binding: FragmentQuizBinding) {
 
 
         binding.cv1.setTextForQuestion(quizStorage.questions[0].question)
@@ -121,7 +124,6 @@ class QuizFragment : Fragment() {
         )
         cv.setTextForAnswer(answers)
     }
-
 
 
     override fun onDestroy() {
