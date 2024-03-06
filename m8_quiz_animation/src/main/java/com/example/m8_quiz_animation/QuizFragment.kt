@@ -23,28 +23,38 @@ class QuizFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentQuizBinding.inflate(inflater, container, false)
         val view = binding.root
-        initView()
-        setListeners()
-        setAnimation()
         return view
     }
 
-    private fun setListeners() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(binding)
+        setOnClickListeners(binding)
+        setAnimation(binding)
+    }
+
+
+    private fun setOnClickListeners(binding: FragmentQuizBinding) {
         binding.bBack.setOnClickListener {
             findNavController().navigate(R.id.action_quizFragment_to_startFragment)
         }
         binding.bSent.setOnClickListener {
             if (checkRadioGroups()) {
-                val result = getResults()
-                val action = QuizFragmentDirections
-                    .actionQuizFragmentToResultFragment(result)
-                findNavController().navigate(action)
+                moveToQuizFragment()
             }
         }
     }
+
+    private fun moveToQuizFragment() {
+        val result = getResults()
+        val action = QuizFragmentDirections
+            .actionQuizFragmentToResultFragment(result)
+        findNavController().navigate(action)
+    }
+
 
     private fun getResults(): Result {
         val result = IntArray(3)
@@ -97,8 +107,7 @@ class QuizFragment : Fragment() {
         return true
     }
 
-
-    private fun initView() {
+    private fun initView(binding: FragmentQuizBinding) {
 
 
         binding.cv1.setTextForQuestion(quizStorage.questions[0].question)
@@ -126,7 +135,7 @@ class QuizFragment : Fragment() {
         cv.setTextForAnswer(answers)
     }
 
-    private fun setAnimation() {
+    private fun setAnimation(binding: FragmentQuizBinding) {
         binding.bBack.animate().apply {
             duration = 5000
             alpha(1f)
@@ -140,7 +149,6 @@ class QuizFragment : Fragment() {
             scaleY(1f)
         }.start()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

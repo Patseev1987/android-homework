@@ -15,13 +15,21 @@ class StartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentStartBinding.inflate(inflater, container, false)
         val view = binding.root
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setListeners(binding)
+    }
+
+    private fun setListeners(binding: FragmentStartBinding) {
         binding.bLetsGo.setOnClickListener {
             findNavController().navigate(R.id.action_startFragment_to_quizFragment)
         }
-        return view
     }
 
     override fun onDestroy() {

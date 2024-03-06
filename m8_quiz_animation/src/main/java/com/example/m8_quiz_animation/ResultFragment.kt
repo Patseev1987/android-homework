@@ -24,17 +24,59 @@ class ResultFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentResultBinding.inflate(inflater, container, false)
         val view = binding.root
-        setText()
-        setOnClickListener()
-        setAnimation()
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews(binding)
+        setOnClickListeners(binding)
+        setAnimation(binding)
+    }
 
-    private fun setAnimation() {
+
+    private fun setOnClickListeners(binding: FragmentResultBinding) {
+        binding.bAgain.setOnClickListener {
+            findNavController().navigate(R.id.action_resultFragment_to_quizFragment)
+        }
+    }
+
+    private fun initViews(binding: FragmentResultBinding) {
+        answers = ResultFragmentArgs.fromBundle(requireArguments()).results
+        val numberOfRightAnswers = getNumberOfRightAnswers()
+        val textTitle = if (numberOfRightAnswers != 1)
+            String.format(getString(R.string.you_were_right_in_d_cases), numberOfRightAnswers)
+        else String.format(getString(R.string.you_were_right_in_d_case), numberOfRightAnswers)
+        setHints()
+        binding.tvNumberOfRightAnswer.text = textTitle
+    }
+
+    private fun getNumberOfRightAnswers(): Int {
+        var result = 0
+
+        for (answer in answers.rightAnswers)
+            if (answer == 1) {
+                result++
+            }
+        return result
+    }
+
+    private fun setHints() {
+        if (answers.rightAnswers.contains(0)) {
+            val sb = StringBuilder()
+            for ((i, answer) in answers.rightAnswers.withIndex()) {
+                if (answer == 0) {
+                    sb.append("In ${i + 1} case the right answer is:\n${QuizStorage.questions[i].rightAnswer}\n")
+                }
+            }
+            binding.hints.text = sb.toString()
+        }
+    }
+
+    private fun setAnimation(binding: FragmentResultBinding) {
         ObjectAnimator.ofFloat(
             binding.bAgain, View.ROTATION, 0f, 360f
         ).apply {
@@ -71,45 +113,6 @@ class ResultFragment : Fragment() {
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
             start()
-        }
-    }
-
-    private fun setOnClickListener() {
-        binding.bAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_resultFragment_to_quizFragment)
-        }
-    }
-
-    private fun setText() {
-        answers = ResultFragmentArgs.fromBundle(requireArguments()).results
-        val numberOfRightAnswers = getNumberOfRightAnswers()
-        val textTitle = if (numberOfRightAnswers != 1) String.format(
-            getString(R.string.you_were_right_in_d_cases),
-            numberOfRightAnswers
-        )
-        else String.format(getString(R.string.you_were_right_in_d_case), numberOfRightAnswers)
-        setHints()
-        binding.tvNumberOfRightAnswer.text = textTitle
-    }
-
-    private fun getNumberOfRightAnswers(): Int {
-        var result = 0
-
-        for (answer in answers.rightAnswers) if (answer == 1) {
-            result++
-        }
-        return result
-    }
-
-    private fun setHints() {
-        if (answers.rightAnswers.contains(0)) {
-            val sb = StringBuilder()
-            for ((i, answer) in answers.rightAnswers.withIndex()) {
-                if (answer == 0) {
-                    sb.append("In ${i + 1} case the right answer is:\n${QuizStorage.questions[i].rightAnswer}\n")
-                }
-            }
-            binding.hints.text = sb.toString()
         }
     }
 
