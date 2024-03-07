@@ -23,3 +23,5 @@ include(":m5_quiz_resources")
 include(":m7_quiz_fragments")
 include(":m8_quiz_animation")
 include(":m9_quiz_localization")
+
+include(":m10_timer_life_cycle")

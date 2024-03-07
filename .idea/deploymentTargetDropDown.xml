@@ -5,6 +5,9 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="m10_timer_life_cycle">
+        <State />
+      </entry>
       <entry key="m1_hello_world">
         <State />
       </entry>
@@ -27,6 +30,9 @@
         <State />
       </entry>
       <entry key="m9_quiz_localization">
+        <State />
+      </entry>
+      <entry key="outlinedbutton">
         <State />
       </entry>
     </value>

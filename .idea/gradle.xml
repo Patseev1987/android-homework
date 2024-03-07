@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/m10_timer_life_cycle" />
             <option value="$PROJECT_DIR$/m1_hello_world" />
             <option value="$PROJECT_DIR$/m2_layout" />
             <option value="$PROJECT_DIR$/m3_constraint" />
