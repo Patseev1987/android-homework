@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/m5_quiz_resources" />
             <option value="$PROJECT_DIR$/m7_quiz_fragments" />
             <option value="$PROJECT_DIR$/m8_quiz_animation" />
+            <option value="$PROJECT_DIR$/m9_quiz_localization" />
           </set>
         </option>
       </GradleProjectSettings>

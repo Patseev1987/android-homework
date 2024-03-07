@@ -8,7 +8,7 @@
         tools:context=".StartFragment">
 
     <ImageView
-            android:id="@+id/imageViewWelcomePicture"
+            android:id="@+id/iv_welcome_picture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/__04"
@@ -26,9 +26,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewWelcomePicture"
+            app:layout_constraintTop_toBottomOf="@+id/iv_welcome_picture"
             app:layout_constraintVertical_bias="0.82"
             android:layout_marginBottom="32dp"/>
-
+    <Button
+            android:id="@+id/b_set_data_of_birth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set_your_data_oof_birth"
+            app:layout_constraintTop_toBottomOf="@+id/iv_welcome_picture"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

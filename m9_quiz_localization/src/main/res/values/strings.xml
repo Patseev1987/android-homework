@@ -15,6 +15,8 @@
     <string name="you_should_choose_answer_on_the_third_question">You should choose answer on the third question
     </string>
     <string name="in_case_the_right_answer_is">In %d case the right answer is:\n%s\n\n</string>
+    <string name="set_your_data_oof_birth">Set your data oof birth</string>
+    <string name="your_date_of_birth_is">Your date of birth -> %s</string>
 
     <string-array name="question_arrays">
         <item>Where is the archive for this lesson?</item>
