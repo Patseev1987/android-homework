@@ -6,7 +6,31 @@
         <State />
       </entry>
       <entry key="m10_timer_life_cycle">
-        <State />
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Medium_Phone_API_29.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Medium_Phone_API_29.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-09T17:38:11.626026Z" />
+        </State>
       </entry>
       <entry key="m1_hello_world">
         <State />
@@ -30,9 +54,6 @@
         <State />
       </entry>
       <entry key="m9_quiz_localization">
-        <State />
-      </entry>
-      <entry key="outlinedbutton">
         <State />
       </entry>
     </value>
