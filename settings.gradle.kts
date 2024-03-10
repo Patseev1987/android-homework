@@ -25,3 +25,4 @@ include(":m8_quiz_animation")
 include(":m9_quiz_localization")
 
 include(":m10_timer_life_cycle")
+include(":m11_timer_data_storage")
