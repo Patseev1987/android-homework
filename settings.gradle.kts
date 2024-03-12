@@ -26,3 +26,4 @@ include(":m9_quiz_localization")
 
 include(":m10_timer_life_cycle")
 include(":m11_timer_data_storage")
+include(":m12_mvvm")
