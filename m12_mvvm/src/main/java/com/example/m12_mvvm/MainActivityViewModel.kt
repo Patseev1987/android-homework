@@ -5,36 +5,39 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.m12_mvvm.Result
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class MainActivityViewModel : ViewModel() {
 
-    private var _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    val isLoading: LiveData<Boolean> get() = _isLoading
-    private var request:String = ""
-    private var results = listOf("""We couldn't find anything about "%s"""", """"%s" - Not found!""", "Connection error!")
-    private var _result: MutableLiveData<String> = MutableLiveData()
-    val result: LiveData<String> get() = _result
-    private var _length: MutableLiveData<Int> = MutableLiveData()
-    val length: LiveData<Int> get() = _length
+    private var _state:MutableLiveData<State> = MutableLiveData()
+    val state:LiveData<State> get() = _state
+
+    private var results = listOf(
+        """We couldn't find anything about "%s""""
+        , """"%s" - Not found!"""
+        , "Connection error!"
+    )
+
 
 
     private val scope = viewModelScope
-    fun loading() {
+    fun loading(request: String) {
         scope.launch {
-            _isLoading.value = true
+            _state.value = Loading
             delay(5000)
-            _result.value =  String.format( results[Random.nextInt(results.size)],request)
-            _isLoading.value = false
+            val result =  String.format(
+                results[Random.nextInt(results.size)]
+                ,request
+            )
+            _state.value = Result(result)
         }
     }
 
-    fun setRequest(request:String){
-        this.request = request
+    fun setNumberOfLettersInRequest(value:Int){
+     _state.value = if (value<3) Waiting else Ready
     }
-    fun setLength(length: Int) {
-        _length.value = length
-    }
+
 }
