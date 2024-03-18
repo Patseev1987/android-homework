@@ -10,18 +10,14 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class MainActivityViewModel : ViewModel() {
+    private var cacheRequest: String? = null
 
-    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Waiting)
+    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Result(cacheRequest))
     val state = _state.asStateFlow()
 
-    private val _request: MutableStateFlow<String> = MutableStateFlow("")
 
-    @OptIn(FlowPreview::class)
-    val request = _request.asStateFlow()
-        .debounce(1000)
-        .filter {
-            it.length > 2
-        }
+    val searchString: MutableStateFlow<String> = MutableStateFlow("")
+
 
     private var job: Job? = null
 
@@ -33,27 +29,29 @@ class MainActivityViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            request.collect {
-            loading(it)
-            }
+            searchString
+                .debounce(500)
+                .filter {
+                    it.length > 2
+                }
+                .collect {
+                    loading()
+                }
         }
     }
 
-    private fun loading( request:String) {
+    private fun loading() {
         job = scope.launch {
             _state.value = State.Loading
             delay(5000)
             val result = String.format(
-                results[Random.nextInt(results.size)], request
+                results[Random.nextInt(results.size)], searchString.value
             )
-            _state.value = State.Result(result)
+            cacheRequest = result
+            _state.value = State.Result(cacheRequest)
         }
     }
 
-
-    fun setRequest(request: String) {
-        _request.value = request
-    }
 
     fun cancel() {
         job?.cancel()
