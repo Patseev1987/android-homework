@@ -17,9 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-        binding.buttonSearch.isEnabled = false
-        observe(viewModel = viewModel, binding = binding)
         setListeners(viewModel = viewModel, binding = binding)
+        observe(viewModel = viewModel, binding = binding)
     }
 
 
@@ -35,26 +34,31 @@ class MainActivity : AppCompatActivity() {
 
     private fun observe(binding: ActivityMainBinding, viewModel: MainActivityViewModel) {
         viewModel.state.observe(this) {
-            binding.progressBar.visibility = View.GONE
-            binding.buttonSearch.isEnabled = true
-            binding.inputEditText.isEnabled = true
+
+
             when (it) {
                 is Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                     binding.buttonSearch.isEnabled = false
                     binding.inputEditText.isEnabled = false
+                    binding.results.text = it.LOADING
                 }
 
                 is Waiting -> {
                     binding.buttonSearch.isEnabled = false
+                    it.lastResult.let { lastResult -> binding.results.text = lastResult }
                 }
 
                 is Ready -> {
                     binding.buttonSearch.isEnabled = true
+                    it.lastResult.let { lastResult -> binding.results.text = lastResult }
                 }
 
                 is Result -> {
                     binding.results.text = it.value
+                    binding.progressBar.visibility = View.GONE
+                    binding.inputEditText.isEnabled = true
+                    binding.buttonSearch.isEnabled = true
                 }
             }
         }

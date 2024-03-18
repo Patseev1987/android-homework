@@ -10,9 +10,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-class MainActivityViewModel : ViewModel() {
+class  MainActivityViewModel : ViewModel() {
 
-    private var _state:MutableLiveData<State> = MutableLiveData()
+    private var cacheResult:String? = null
+    private var _state:MutableLiveData<State> = MutableLiveData(Waiting(cacheResult))
     val state:LiveData<State> get() = _state
 
     private var results = listOf(
@@ -32,12 +33,15 @@ class MainActivityViewModel : ViewModel() {
                 results[Random.nextInt(results.size)]
                 ,request
             )
+            cacheResult = result
             _state.value = Result(result)
         }
     }
 
     fun setNumberOfLettersInRequest(value:Int){
-     _state.value = if (value<3) Waiting else Ready
+        if (_state.value !is Loading) {
+            _state.value = if (value < 3) Waiting(cacheResult) else Ready(cacheResult)
+        }
     }
 
 }

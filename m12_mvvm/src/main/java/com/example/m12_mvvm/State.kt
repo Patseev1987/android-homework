@@ -2,8 +2,9 @@ package com.example.m12_mvvm
 
 sealed class State
 
-object Waiting : State()
-object Loading : State()
-
-object Ready:State()
+class Waiting(val lastResult:String? = null) : State()
+data object Loading : State(){
+    const val LOADING = "Loading..."
+}
+class Ready(val lastResult:String? = null) : State()
 class Result(val value: String) : State()

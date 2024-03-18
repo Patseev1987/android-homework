@@ -42,7 +42,7 @@ class MainActivityViewModel : ViewModel() {
     private fun loading( request:String) {
         job = scope.launch {
             _state.value = State.Loading
-            delay(1000)
+            delay(5000)
             val result = String.format(
                 results[Random.nextInt(results.size)], request
             )
