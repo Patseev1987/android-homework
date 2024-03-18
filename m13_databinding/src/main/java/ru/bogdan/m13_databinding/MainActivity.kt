@@ -18,45 +18,11 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by lazy {
         ViewModelProvider(this)[MainActivityViewModel::class.java]
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        binding.inputEditText.doAfterTextChanged {
-            viewModel.setRequest(binding.inputEditText.text.toString())
-        }
-
-        binding.buttonCancel.setOnClickListener {
-            viewModel.cancel()
-        }
-
-        observeFlow(binding,viewModel)
-    }
-
-
-    private fun observeFlow(binding: ActivityMainBinding, viewModel: MainActivityViewModel){
-       lifecycleScope.launch {
-           viewModel.state
-               .collect{
-                when (it) {
-                    is State.Waiting -> {
-
-                    }
-                    is State.Ready -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.buttonCancel.isEnabled = false
-                    }
-                    is State.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.buttonCancel.isEnabled = true
-                    }
-                    is State.Result -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.buttonCancel.isEnabled = false
-                        binding.results.text = it.value
-                    }
-                }
-       } }
-
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
     }
 }

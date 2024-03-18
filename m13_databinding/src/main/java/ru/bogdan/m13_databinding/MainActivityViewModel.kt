@@ -11,7 +11,7 @@ import kotlin.random.Random
 
 class MainActivityViewModel : ViewModel() {
 
-    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Ready)
+    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Waiting)
     val state = _state.asStateFlow()
 
     private val _request: MutableStateFlow<String> = MutableStateFlow("")

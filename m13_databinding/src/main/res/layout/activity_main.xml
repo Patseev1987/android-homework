@@ -18,6 +18,7 @@
                 android:layout_margin="20dp">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_edit_text"
+                    android:afterTextChanged="@{(text) -> viewModel.setRequest(text.toString())}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -29,6 +30,7 @@
                 android:text="@string/results"
                 android:textSize="30sp"
                 android:gravity="center"
+                android:state="@{viewModel.state}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/input_layout"
@@ -39,6 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"
+                android:state="@{viewModel.state}"
+                android:onClickListener="@{() -> viewModel.cancel()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:scaleX="2"
                 android:scaleY="2"
+                android:state="@{viewModel.state}"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +65,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
-
+        <variable name="viewModel"
+                  type="ru.bogdan.m13_databinding.MainActivityViewModel"/>
     </data>
 
 </layout>

@@ -4,7 +4,6 @@ sealed class State{
     object Waiting : State()
     object Loading : State()
 
-    object Ready:State()
     class Result(val value: String) : State()
 }
 
