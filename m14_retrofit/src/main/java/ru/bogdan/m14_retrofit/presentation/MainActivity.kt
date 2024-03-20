@@ -59,11 +59,12 @@ class MainActivity : AppCompatActivity() {
                             binding.progressBar.visibility = View.GONE
                             binding.twFirstName.text = it.user.name
                             binding.twLastName.text = it.user.secondName
-                            binding.twDateOfBirth.text = it.user.age
+                            binding.twAge.text = it.user.age
                             binding.twEmail.text = it.user.email
                             binding.twPhone.text = it.user.phone
                             binding.twCity.text = it.user.city
                             binding.twCountry.text = it.user.country
+                            binding.twNationality.text = it.user.nationality
 
                             Glide.with(this@MainActivity)
                                 .load(it.user.imageUrl)

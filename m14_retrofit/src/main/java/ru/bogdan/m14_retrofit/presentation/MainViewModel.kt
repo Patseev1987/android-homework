@@ -17,15 +17,17 @@ class MainViewModel(private val apiHelper: ApiHelper):ViewModel() {
     }
 
 private    fun getUser(){
-        _state.value = State.Loading
+    _state.value = State.Loading
         viewModelScope.launch {
-            apiHelper.getUser().collect{
+            apiHelper.getUser()
+                .collect{
                 _state.value = State.Result(it)
             }
         }
     }
 
     fun updateData(){
+        _state.value = State.Loading
         apiHelper.updateData()
     }
 }
