@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.*
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,31 +43,33 @@ class MainActivity : AppCompatActivity() {
     private fun observeFlow(binding: ActivityMainBinding, viewModel: MainViewModel) {
         lifecycleScope
             .launch {
-                viewModel.state.collectLatest {
-                    when (it) {
-                        is State.Loading -> {
-                            binding.progressBar.visibility = View.VISIBLE
-                        }
+                repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                    viewModel.state.collectLatest {
+                        when (it) {
+                            is State.Loading -> {
+                                binding.progressBar.visibility = View.VISIBLE
+                            }
 
-                        is State.Start -> {
-                            binding.progressBar.visibility = View.GONE
-                        }
+                            is State.Start -> {
+                                binding.progressBar.visibility = View.GONE
+                            }
 
-                        is State.Result -> {
-                            binding.progressBar.visibility = View.GONE
-                            binding.twFirstName.text = it.user.name
-                            binding.twLastName.text = it.user.secondName
-                            binding.twAge.text = it.user.age
-                            binding.twEmail.text = it.user.email
-                            binding.twPhone.text = it.user.phone
-                            binding.twCity.text = it.user.city
-                            binding.twCountry.text = it.user.country
-                            binding.twNationality.text = it.user.nationality
+                            is State.Result -> {
+                                binding.progressBar.visibility = View.GONE
+                                binding.twFirstName.text = it.user.name
+                                binding.twLastName.text = it.user.secondName
+                                binding.twAge.text = it.user.age
+                                binding.twEmail.text = it.user.email
+                                binding.twPhone.text = it.user.phone
+                                binding.twCity.text = it.user.city
+                                binding.twCountry.text = it.user.country
+                                binding.twNationality.text = it.user.nationality
 
-                            Glide.with(this@MainActivity)
-                                .load(it.user.imageUrl)
-                                .into(binding.iwPhoto)
+                                Glide.with(this@MainActivity)
+                                    .load(it.user.imageUrl)
+                                    .into(binding.iwPhoto)
 
+                            }
                         }
                     }
                 }
