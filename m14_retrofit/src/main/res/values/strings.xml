@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">m14_retrofit</string>
+    <string name="surname">Surname:</string>
+    <string name="name">Name:</string>
+    <string name="address">Address:</string>
+    <string name="country_lable">Country:</string>
+    <string name="city_label">City:</string>
+    <string name="contacts">Contacts:</string>
+    <string name="email_label">Email:</string>
+    <string name="phone_label">Phone:</string>
+    <string name="birth_day_label">Birth day:</string>
+    <string name="date_of_birth_label">Date of birth:</string>
+    <string name="update_user">Update user</string>
+    <string name="user_photo">User photo</string>
 </resources>

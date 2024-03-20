@@ -10,7 +10,6 @@ object ApiFactory {
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory()
         .build()
 
     val apiService:ApiService = retrofit.create(ApiService::class.java)
