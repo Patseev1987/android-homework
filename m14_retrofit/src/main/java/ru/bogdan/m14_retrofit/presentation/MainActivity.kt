@@ -16,14 +16,21 @@ import ru.bogdan.m14_retrofit.R
 import ru.bogdan.m14_retrofit.data.ApiFactory
 import ru.bogdan.m14_retrofit.data.ApiHelperImpl
 import ru.bogdan.m14_retrofit.databinding.ActivityMainBinding
+import ru.bogdan.m14_retrofit.di.DaggerComponent
+import ru.bogdan.m14_retrofit.domain.GetUserUseCase
+import ru.bogdan.m14_retrofit.domain.UpdateUserUseCase
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private val apiHelperImpl = ApiHelperImpl()
 
-    private val viewModelFactory = ViewModelFactory(apiHelperImpl)
+    private val component by lazy {
+        DaggerComponent.create()
+    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
-    private val viewModel: MainViewModel by lazy {
+    private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
     }
 
@@ -35,8 +42,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        component.inject(this)
         observeFlow(binding, viewModel)
-        setListeners(binding)
+        setListeners(binding,viewModel)
 
     }
 
@@ -75,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun setListeners(binding: ActivityMainBinding) {
+    private fun setListeners(binding: ActivityMainBinding, viewModel: MainViewModel) {
 
         binding.bUpdate.setOnClickListener {
             viewModel.updateData()

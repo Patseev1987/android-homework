@@ -2,14 +2,13 @@ package ru.bogdan.m14_retrofit.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.bogdan.m14_retrofit.data.ApiHelper
+import javax.inject.Inject
+import javax.inject.Provider
 
-class ViewModelFactory(private val apiHelper: ApiHelper) : ViewModelProvider.Factory {
+class ViewModelFactory @Inject constructor(
+    private val viewModels:@JvmSuppressWildcards Map<Class<out ViewModel>,Provider <ViewModel>>
+): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(apiHelper) as T
-        } else {
-            throw RuntimeException("unknown View Model")
-        }
+        return viewModels[modelClass]?.get() as T
     }
 }

@@ -1,4 +1,4 @@
-package ru.bogdan.m14_retrofit.domain
+package ru.bogdan.m14_retrofit.data.pojo
 
 
 import com.google.gson.annotations.SerializedName

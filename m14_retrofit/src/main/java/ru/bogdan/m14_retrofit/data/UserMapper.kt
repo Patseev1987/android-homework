@@ -1,9 +1,10 @@
 package ru.bogdan.m14_retrofit.data
 
 import ru.bogdan.m14_retrofit.domain.SimpleUser
-import ru.bogdan.m14_retrofit.domain.User
+import ru.bogdan.m14_retrofit.data.pojo.User
+import javax.inject.Inject
 
-class UserMapper {
+class UserMapper@Inject constructor() {
     fun getSimpleUserFromUser(user: User):SimpleUser{
         return SimpleUser(
             name = user.results[0].name.first,

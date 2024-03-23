@@ -2,20 +2,25 @@ package ru.bogdan.m14_retrofit.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import ru.bogdan.m14_retrofit.data.ApiHelper
+import ru.bogdan.m14_retrofit.domain.ApplicationRepository
+import ru.bogdan.m14_retrofit.domain.GetUserUseCase
+import ru.bogdan.m14_retrofit.domain.UpdateUserUseCase
+import javax.inject.Inject
 
 
-class MainViewModel(private val apiHelper: ApiHelper):ViewModel() {
+class MainViewModel @Inject constructor(
+    private val updateUserUseCase: UpdateUserUseCase,
+    private val getUserUseCase: GetUserUseCase,
+    private val loadingFlow:MutableSharedFlow<State>,
+    scope:CoroutineScope
+):ViewModel() {
 
-    private val loadingFlow:MutableSharedFlow<State> = MutableSharedFlow()
-    private val scope:CoroutineScope = CoroutineScope(Dispatchers.IO)
 
-    val state: Flow<State> = apiHelper.getUser()
+    val state: Flow<State> = getUserUseCase.getUser()
         .map{State.Result(it) as State }
         .onStart { emit(State.Loading) }
         .mergeWith(loadingFlow)
@@ -34,7 +39,7 @@ class MainViewModel(private val apiHelper: ApiHelper):ViewModel() {
     fun updateData(){
         viewModelScope.launch {
             loadingFlow.emit(State.Loading)
-            apiHelper.updateData()
+            updateUserUseCase.update()
         }
     }
 }
