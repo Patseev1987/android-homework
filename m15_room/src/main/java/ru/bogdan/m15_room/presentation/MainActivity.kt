@@ -1,7 +1,8 @@
-package ru.bogdan.m15_room
+package ru.bogdan.m15_room.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.bogdan.m15_room.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

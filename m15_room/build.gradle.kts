@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,4 +42,35 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.23")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+
+
+    val lifecycle_version = "2.7.0"
+
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version")
+
+    implementation ("com.google.dagger:dagger:2.51")
+    kapt ("com.google.dagger:dagger-compiler:2.51")
+
+
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+
+
 }
