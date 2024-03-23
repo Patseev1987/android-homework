@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                                 binding.progressBar.visibility = View.VISIBLE
                                 binding.bUpdate.isEnabled = false
                             }
+
                             is State.Result -> {
                                 binding.progressBar.visibility = View.GONE
                                 binding.twFirstName.text = it.user.name
