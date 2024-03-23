@@ -8,5 +8,4 @@ sealed class State {
 
     class Result(val user: SimpleUser):State()
 
-    object Start:State()
 }

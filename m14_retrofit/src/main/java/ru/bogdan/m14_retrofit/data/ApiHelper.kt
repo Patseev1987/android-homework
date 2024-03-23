@@ -6,5 +6,5 @@ import ru.bogdan.m14_retrofit.domain.User
 
 interface ApiHelper {
     fun getUser(): Flow<SimpleUser>
-    fun updateData()
+   suspend fun updateData()
 }

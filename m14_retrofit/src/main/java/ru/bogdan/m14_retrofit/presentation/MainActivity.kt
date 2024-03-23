@@ -48,12 +48,8 @@ class MainActivity : AppCompatActivity() {
                         when (it) {
                             is State.Loading -> {
                                 binding.progressBar.visibility = View.VISIBLE
+                                binding.bUpdate.isEnabled = false
                             }
-
-                            is State.Start -> {
-                                binding.progressBar.visibility = View.GONE
-                            }
-
                             is State.Result -> {
                                 binding.progressBar.visibility = View.GONE
                                 binding.twFirstName.text = it.user.name
@@ -68,6 +64,8 @@ class MainActivity : AppCompatActivity() {
                                 Glide.with(this@MainActivity)
                                     .load(it.user.imageUrl)
                                     .into(binding.iwPhoto)
+
+                                binding.bUpdate.isEnabled = true
 
                             }
                         }
