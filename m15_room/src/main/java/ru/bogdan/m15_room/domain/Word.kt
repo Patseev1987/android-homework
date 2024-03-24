@@ -1,8 +1,8 @@
 package ru.bogdan.m15_room.domain
 
-data class Word (
+data class Word(
 
-    val word:String,
+    val word: String,
 
-    var counter:Int = 1
+    var counter: Int = 1
 )

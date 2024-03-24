@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [WordEntity::class], exportSchema = false, version = 1)
-abstract class WordsDatabase():RoomDatabase() {
+abstract class WordsDatabase() : RoomDatabase() {
 
     abstract val wordDao: Dao
 
@@ -14,7 +14,7 @@ abstract class WordsDatabase():RoomDatabase() {
         @Volatile
         private var INSTANCE: WordsDatabase? = null
 
-        fun getInstance (application: Application): WordsDatabase {
+        fun getInstance(application: Application): WordsDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {

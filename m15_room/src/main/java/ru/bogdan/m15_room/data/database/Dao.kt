@@ -19,6 +19,7 @@ interface Dao {
 
     @Query("select * from words where word = :id")
     suspend fun getWord(id: String): WordEntity?
+
     @Query("delete from words")
     suspend fun clearTable()
 }

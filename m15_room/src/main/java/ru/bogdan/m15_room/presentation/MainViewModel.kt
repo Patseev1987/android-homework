@@ -3,22 +3,28 @@ package ru.bogdan.m15_room.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.bogdan.m15_room.domain.ApplicationRepository
+import ru.bogdan.m15_room.domain.CleanTableUseCase
+import ru.bogdan.m15_room.domain.GetWordsUseCase
+import ru.bogdan.m15_room.domain.SaveWordUseCase
+import javax.inject.Inject
 
-class MainViewModel(private val applicationRepository: ApplicationRepository) : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val getWordsUseCase: GetWordsUseCase,
+    private val saveWordUseCase: SaveWordUseCase,
+    private val cleanTableUseCase: CleanTableUseCase
+) : ViewModel() {
 
-    val state = applicationRepository.loadWords()
+    val state = getWordsUseCase.getWords()
 
 
     fun saveWord(word: String) {
         viewModelScope.launch {
-            applicationRepository.saveWord(word)
+            saveWordUseCase.save(word)
         }
     }
 
     fun clearDatabase() {
-        viewModelScope.launch { applicationRepository.clearTable() }
-
+        viewModelScope.launch { cleanTableUseCase.cleanTable() }
     }
 
 

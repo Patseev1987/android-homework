@@ -7,8 +7,13 @@ import ru.bogdan.m15_room.data.database.Dao
 import ru.bogdan.m15_room.data.database.WordEntity
 import ru.bogdan.m15_room.domain.ApplicationRepository
 import ru.bogdan.m15_room.domain.Word
+import javax.inject.Inject
 
-class ApplicationRepositoryImpl(private val dao: Dao,private val scope:CoroutineScope) :ApplicationRepository{
+class ApplicationRepositoryImpl @Inject constructor(
+    private val dao: Dao,
+    private val scope: CoroutineScope,
+    private val mapper: WordMapper
+) : ApplicationRepository {
     override suspend fun saveWord(word: String) {
         val tempWord = dao.getWord(word)
         if (tempWord == null) {
@@ -18,9 +23,9 @@ class ApplicationRepositoryImpl(private val dao: Dao,private val scope:Coroutine
         }
     }
 
-    override  fun loadWords(): Flow<List<Word>> {
+    override fun loadWords(): Flow<List<Word>> {
         return dao.getWords().map {
-            it.map { word -> WordMapper().getWordFromWordEntity(word) }
+            it.map { word -> mapper.getWordFromWordEntity(word) }
         }
     }
 
