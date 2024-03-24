@@ -7,6 +7,7 @@ import ru.bogdan.m15_room.data.database.Dao
 import ru.bogdan.m15_room.data.database.WordEntity
 import ru.bogdan.m15_room.domain.ApplicationRepository
 import ru.bogdan.m15_room.domain.Word
+import ru.bogdan.m15_room.presentation.State
 import javax.inject.Inject
 
 class ApplicationRepositoryImpl @Inject constructor(
@@ -23,10 +24,12 @@ class ApplicationRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun loadWords(): Flow<List<Word>> {
-        return dao.getWords().map {
-            it.map { word -> mapper.getWordFromWordEntity(word) }
-        }
+    override fun loadWords(): Flow<State> {
+        return dao.getWords()
+            .map {
+                it.map { word -> mapper.getWordFromWordEntity(word) }
+            }
+            .map { State.Result(it) }
     }
 
     override suspend fun loadWord(id: String): WordEntity? {

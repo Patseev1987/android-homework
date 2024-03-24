@@ -2,6 +2,7 @@ package ru.bogdan.m15_room.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -58,7 +59,16 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.state.collect {
-                    adapter.submitList(it)
+
+                    when (it) {
+                        is State.Error -> {
+                            binding.inputLayout.error = it.msg
+                        }
+                        is State.Result -> {
+                            adapter.submitList(it.words)
+                            binding.inputLayout.error = ""
+                        }
+                    }
                 }
             }
         }
