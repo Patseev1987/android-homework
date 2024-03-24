@@ -1,5 +1,7 @@
 package ru.bogdan.m15_room.domain
 
+import ru.bogdan.m15_room.data.database.WordEntity
+
 class SaveWordUseCase(private val applicationRepository: ApplicationRepository) {
-    fun save(word:Word) = applicationRepository.saveWord(word)
+    suspend fun save(word:String) = applicationRepository.saveWord(word)
 }

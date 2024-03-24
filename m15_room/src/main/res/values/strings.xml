@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">m15_room</string>
+    <string name="add_word">add word</string>
+    <string name="clear_dictionary">Clear dictionary</string>
+    <string name="enter_a_word">enter a word</string>
 </resources>

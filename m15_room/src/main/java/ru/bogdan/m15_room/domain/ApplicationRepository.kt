@@ -1,11 +1,14 @@
 package ru.bogdan.m15_room.domain
 
 import kotlinx.coroutines.flow.Flow
+import ru.bogdan.m15_room.data.database.WordEntity
 
 interface ApplicationRepository {
-    fun saveWord( word:Word )
+    suspend fun saveWord( word:String )
 
-   suspend fun loadWords(): Flow<List<Word>>
+   fun loadWords(): Flow<List<Word>>
 
-    fun loadWord( id:String):Word
+  suspend  fun loadWord( id:String):WordEntity?
+
+  suspend fun clearTable()
 }
