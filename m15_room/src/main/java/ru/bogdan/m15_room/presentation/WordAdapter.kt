@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.bogdan.m15_room.R
 import ru.bogdan.m15_room.domain.Word
@@ -24,8 +23,8 @@ class WordAdapter : ListAdapter<Word, WordAdapter.WordHolder>(WordDiffItemCallba
 
     class WordHolder(rootView: CardView) : ViewHolder(rootView) {
 
-        val textViewWord = rootView.findViewById<TextView>(R.id.tw_word)
-        val textViewCounter = rootView.findViewById<TextView>(R.id.tw_counter)
+       private val textViewWord = rootView.findViewById<TextView>(R.id.tw_word)
+       private val textViewCounter = rootView.findViewById<TextView>(R.id.tw_counter)
 
         fun bind(word: Word) {
             textViewWord.text = word.word
