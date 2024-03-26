@@ -13,7 +13,7 @@ class MainViewModel @Inject constructor(
     private val loadingFlow: MutableSharedFlow<State>,
     private val updateActivityUseCase: UpdateActivityUseCase
 ) : ViewModel() {
-    val state: Flow<State> = getActivityUseCase.getActivity()
+    val state: Flow<State> = getActivityUseCase()
         .map { State.Result(it) as State }
         .onStart { emit(State.Loading) }
         .mergeWith(loadingFlow)
@@ -30,7 +30,7 @@ class MainViewModel @Inject constructor(
     fun updateData() {
         viewModelScope.launch {
             loadingFlow.emit(State.Loading)
-            updateActivityUseCase.updateActivity()
+            updateActivityUseCase()
         }
     }
 

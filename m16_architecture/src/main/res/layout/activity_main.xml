@@ -26,7 +26,7 @@
             tools:text="Play football"
             android:textSize="20sp"
             android:gravity="center"
-            android:layout_marginHorizontal="40dp"
+            android:padding="20dp"
             app:layout_constraintBottom_toTopOf="@+id/b_refresh"
             android:layout_marginBottom="30dp"
             app:layout_constraintStart_toStartOf="parent"
