@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">m16_architecture</string>
+    <string name="refresh_activity">Refresh activity</string>
 </resources>
