@@ -18,22 +18,12 @@
         <State />
       </entry>
       <entry key="m14_retrofit">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Medium_Phone_API_29.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-19T19:35:17.605047Z" />
-        </State>
+        <State />
       </entry>
       <entry key="m15_room">
+        <State />
+      </entry>
+      <entry key="m16_architecture">
         <State />
       </entry>
       <entry key="m1_hello_world">
@@ -46,20 +36,7 @@
         <State />
       </entry>
       <entry key="m4_components">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Medium_Phone_API_29.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-19T19:32:23.546994Z" />
-        </State>
+        <State />
       </entry>
       <entry key="m5_quiz_resources">
         <State />
